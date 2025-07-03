@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zikra</title>
+    <link rel="stylesheet" href="ramzan.css">
+    <!-- <script defer src="ramzanScript.js"></script> -->
+    <script defer src="/client/ramzan/ramzanCopy.js"></script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- <div class="popup">
+            <div class="cross-div">
+                <span class="cross-symbol"> &#10006; </span>
+            </div>
+            <form id="filter-form" action="/filter" method="GET">
+                <div class="juz-div">
+                    <label for="juz-no">:Select Juz Number</label>
+                    <input type="number" min="1" max="30" class="ayat-input-field" id="juz-no" name="juz">
+                </div>
+                <div class="btns-div">
+                    <button id="btn">Submit</button>
+                    <a href="/client/other/index.html" id="other-btn">Other Site</a>
+                </div>
+            </form>
+        </div> -->
+        <div class="popup">
+            <div class="cross-div">
+                <span class="cross-symbol"> &#10006; </span>
+            </div>
+            <!-- <input name="add-text" id="value-1" class="ayat-input-field" type="text"></input> -->
+
+            <select name="sabaq-ruba" id="sabaq-ruba" class="select-box">
+                <option value="sabaq" id="sabaq">سبق</option>
+                <option value="rukuh" id="rukuh">
+                    رکوع
+                </option>
+                <option value="ruba" id="ruba">
+                    ربع
+                </option>
+                <option value="nisf" id="nisf">
+                    نصف
+                </option>
+            </select>
+            <div class="para-select-div">
+                <select name="para-select" id="para-select" class="select-box">
+                    <option value=""> پارہ نمبر:</option>
+                </select>
+            </div>
+            <div class="surah-select-div">
+                <select name="surah-select" id="surah-select" class="select-box">
+                    <option value=""> سورة نمبر:</option>
+                </select>
+            </div>
+            <select name="dynamic-dropdown-ruba" id="dynamic-dropdown-ruba" class="select-box">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <select name="dynamic-dropdown-nisf" id="dynamic-dropdown-nisf" class="select-box">
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+            <select name="dynamic-dropdown-ruku" id="dynamic-dropdown-ruku" class="select-box">
+            </select>
+            <div class="btns-div">
+                <button id="btn">Submit</button>
+                <a href="/client/other/index.html" id="ramzan-btn">Other Site</a>
+            </div>
+        </div>
+        <div class="overlay"></div>
+        <div class="wrap">
+            <div class="header-div">
+                <div class="container start">
+                    <img class="sabaq-frame-2" src="/client/Assets/Images/surah-and-ayah.png" alt="sabaq-ayah-frame">
+                    <div class="sabaq-ruku-div">
+                        <div class="sabaq-number">
+                        </div>
+                        <div class="rukuh-number"></div>
+                    </div>
+
+                </div>
+                <div class="fonts-btns">
+                    <button id="font-btn">(+)</button>
+                    <button id="font-btn">(-)</button>
+                    <span class="functionality">Font</span>
+
+                </div>
+                <div class="container-2 center">
+                    <img class="sabaq-frame" src="/client/Assets/Images/surah-and-ayah.png" alt="sabaq-frame">
+                    <div class="ayah-surah-container">
+                        <div class="surat-name"></div>
+                        <div class="ayat-number"></div>
+                    </div>
+
+                </div>
+                <div class="container end">
+                    <img class="sabaq-ayah-frame" src="/client/Assets/Images/surah-and-ayah.png" alt="sabaq-ayah-frame">
+                </div>
+            </div>
+            <div class="ayah">
+                <span id="slide-one-ayat-text" class="ayats"></span>
+                <div class="content-div"></div>
+            </div>
+        </div>
+
+        <div class="stopwatch-container">
+            <div id="time">
+                <span class="digit" id="count">
+                    00</span>
+                <span class="digit" id="sec">
+                    00</span>
+                <span class="digit" id="min">
+                    00</span>
+                <span class="digit" id="hr">
+                    00</span>
+            </div>
+            <div id="buttons">
+                <button class="btn" id="start">
+                    Start</button>
+                <button class="btn" id="stop">
+                    Stop</button>
+                <button class="btn" id="reset">
+                    Reset</button>
+            </div>
+        </div>
+    </div>
+    <div class="record-btns">
+
+        <button id="startRecording">Start Recording (Left Arrow Key)</button>
+        <button id="stopRecording" disabled>Stop Recording ('s' Key)</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lamejs/1.2.0/lame.all.js"></script>
+
+</body>
+
+</html>

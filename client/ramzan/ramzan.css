@@ -1,0 +1,394 @@
+@font-face {
+  font-family: hafs;
+  src: url(/client/Assets/fonts/hafs.otf);
+}
+
+@font-face {
+  font-family: jamel;
+  src: url(/client/Assets/fonts/Jameel-Noori.ttf);
+}
+
+html {
+  overflow: hidden;
+  height: 105vh;
+}
+
+body {
+  font-family: "hafs";
+  /* direction: rtl; */
+  overflow-x: hidden;
+  position: fixed;
+  top: -8px;
+  bottom: 0;
+  left: 0;
+  right: -8px;
+  width: 100%;
+  height: 105vh;
+}
+
+.record-btns {
+  display: none;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ayat {
+  font-size: 45px;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  align-items: center;
+}
+
+.ayats {
+  font-size: 30px;
+  visibility: hidden;
+  display: none;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+ }
+
+::-webkit-scrollbar {
+  width: 0px;
+  display: none;
+}
+
+.input-div {
+  position: relative;
+}
+
+.ayah {
+  overflow-x: hidden;
+  background-size: 100% 100%;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #013938;
+  height: 100vh;
+  overflow-y: scroll;
+  background-image: url(/client/Assets/Images/boder.png);
+  background-repeat: no-repeat;
+}
+
+.chunk,
+.ayahStop {
+  visibility: hidden;
+  opacity: 0;
+  font-size: 50px;
+  display: inline-block;
+  color: #fff;
+  transition: 0.3s ease-in-out all;
+  margin-right: 10px;
+  white-space: pre-wrap; /* Add this line to preserve newlines */
+}
+.chunk {
+  visibility: hidden;
+  opacity: 0;
+  font-size: 50px;
+  display: inline-block;
+  transition: 0.6s ease-in-out all;
+  margin-right: 10px;
+}
+
+.content-div br {
+  display: block;
+  content: "";
+  margin-top: 0.5em; /* Adjust as needed for spacing between lines */
+}
+
+.ayahStop {
+  display: none !important;
+}
+
+.active {
+  display: inline-block;
+  transition: 0.3s ease-in-out all;
+  visibility: visible;
+  opacity: 1;
+}
+
+.content-div {
+  margin: 10em 5em 7em 5em;
+  max-height: -webkit-fill-available;
+  overflow-y: scroll;
+  line-height: 2;
+}
+
+.overlay {
+  position: fixed;
+  height: 105vh;
+  z-index: 1111111;
+  width: 100%;
+  display: none;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup {
+  width: 30%;
+  /* height: 400px; */
+  position: absolute;
+  padding: 1em 2em;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  z-index: 11111111111;
+  border-radius: 10px;
+  align-items: center;
+  text-align: center;
+  background-color: #fff;
+}
+
+.ayat-input-field {
+  font-family: "hafs";
+  width: 100%;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  margin: 1em 0;
+  display: block;
+}
+
+#btn {
+  width: 150px;
+  font-family: "hafs";
+  font-size: 1.5rem;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0.3em 0;
+  position: relative;
+  z-index: 11111111111;
+}
+
+.cross-div {
+  text-align: end;
+  width: 100%;
+}
+
+.cross-symbol {
+  font-family: "hafs";
+  font-size: 2em;
+  cursor: pointer;
+}
+
+#ramzan-btn {
+  text-decoration: none;
+  background-color: #f4cf6e;
+  color: #000;
+  font-size: 1.5rem;
+  padding: 0.3em 1em;
+  border-radius: 10px;
+}
+
+.wrap {
+  width: 100%;
+}
+
+.header-div {
+  display: flex;
+  align-items: center;
+}
+
+.sabaq-ayah-frame {
+  width: 80%;
+  margin-right: 1em;
+  display: none;
+}
+
+.container {
+  position: relative;
+  top: 1em;
+}
+
+.sabaq-number,
+.surat-name,
+.ayat-number,
+.surat-name2,
+.rukuh-number {
+  position: absolute;
+  color: #f4cf6e;
+  transform: translate(-50%, -50%);
+  font-family: initial;
+  font-size: 20px;
+  font-family: "hafs";
+  font-weight: 700;
+  letter-spacing: 1px;
+  width: fit-content;
+}
+
+.rukuh-number {
+  font-family: jamel;
+  font-size: 30px;
+  color: #fff;
+  width: max-content;
+  position: static;
+  transform: none;
+}
+
+.ayah-surah-container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 94px;
+  top: 23px;
+}
+
+.sabaq-ruku-div {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 25px;
+  gap: 1em;
+  left: -23em;
+}
+
+.sabaq-number {
+  color: #fff;
+  font-size: 30px !important;
+  font-family: jamel;
+  position: static;
+  transform: none;
+}
+
+#para-number {
+  font-size: 25px;
+  width: 100%;
+  margin-bottom: 1em;
+  max-height: 300px;
+}
+
+.surat-name {
+  color: #fff;
+  font-family: hafs;
+  font-size: 27px;
+  transform: none;
+  position: static;
+}
+
+.ayat-number {
+  color: #fff;
+  width: 200px;
+  font-size: 27px;
+  font-family: hafs;
+  letter-spacing: 3px;
+  transform: none;
+  position: static;
+}
+
+.container-2 {
+  position: relative;
+  width: 100%;
+  top: 1em;
+}
+
+.sabaq-frame {
+  width: 500px;
+  /* display: none; */
+  position: absolute;
+  left: -13px;
+  top: -25px;
+}
+
+.sabaq-frame-2 {
+  position: absolute;
+  width: 500px;
+  transform: rotate(-180deg);
+  top: -25px;
+  right: 5px;
+}
+.para-select-div,
+.surah-select-div {
+  align-items: baseline;
+  width: 100%;
+  display: none;
+}
+
+#dynamic-dropdown-ruba,
+#dynamic-dropdown-nisf,
+#dynamic-dropdown-ruku {
+  display: none;
+}
+
+.select-box {
+  width: 100%;
+  font-size: 1.5rem;
+  font-family: jamel;
+  margin-bottom: 1.8em;
+}
+
+#dynamic-dropdown-ruba,
+#dynamic-dropdown-nisf {
+  display: none;
+}
+.end {
+  text-align: end;
+  margin-left: 1em;
+}
+
+.fonts-btns {
+  position: absolute;
+  opacity: 0;
+  z-index: 9999999999999;
+  width: 100%;
+  text-align: center;
+  top: 30px;
+  transition: 0.3s ease-in-out all;
+}
+
+.functionality {
+  color: #fff;
+  font-size: 25px;
+  margin: 0 15px;
+  font-weight: 600;
+}
+
+#font-btn {
+  font-size: 25px;
+}
+
+.fonts-btns:hover {
+  opacity: 1;
+  transition: 0.3s ease-in-out all;
+}
+
+.btns-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+#other-btn {
+  text-decoration: none;
+  background-color: #f4cf6e;
+  color: #000;
+  font-size: 1.5rem;
+  padding: 0.3em 1em;
+  border-radius: 10px;
+}
+
+/*  */
+
+#filter-form {
+  width: 100%;
+}
+
+.juz-div label {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.stopwatch-container {
+  position: absolute;
+  color: #fff;
+  display: none;
+}

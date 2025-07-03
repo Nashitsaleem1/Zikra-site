@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zikra</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="popup">
+            <div class="cross-div">
+                <span class="cross-symbol"> &#10006; </span>o
+            </div>
+            <input name="add-text" id="value-1" class="ayat-input-field" type="text"></input>
+
+            <select name="sabaq-ruba" id="sabaq-ruba" class="select-box">
+                <option value="sabaq" id="sabaq">سبق</option>
+                <option value="rukuh" id="rukuh">
+                    رکوع
+                </option>
+                <option value="ruba" id="ruba">
+                    ربع
+                </option>
+                <option value="nisf" id="nisf">
+                    نصف
+                </option>
+            </select>
+            <div class="para-select-div">
+                <select name="para-select" id="para-select" class="select-box">
+                    <option value=""> پارہ نمبر:</option>
+                </select>
+            </div>
+            <div class="surah-select-div">
+                <select name="surah-select" id="surah-select" class="select-box">
+                    <option value=""> سورة نمبر:</option>
+                </select>
+            </div>
+            <select name="dynamic-dropdown-ruba" id="dynamic-dropdown-ruba" class="select-box">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <select name="dynamic-dropdown-nisf" id="dynamic-dropdown-nisf" class="select-box">
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+            <select name="dynamic-dropdown-ruku" id="dynamic-dropdown-ruku" class="select-box">
+            </select>
+            <div class="btns-div">
+                <button id="btn">Submit</button>
+                <a href="/client/ramzan/ramzan.html" id="ramzan-btn">Ramzan Site</a>
+            </div>
+        </div>
+        <div class="overlay"></div>
+        <div class="wrap">
+            <div class="header-div">
+                <div class="container start">
+                    <img class="sabaq-ayah-frame" src="/client/Assets/Images/sabaq-ayah-frame.png"
+                        alt="sabaq-ayah-frame">
+                    <div class="sabaq-number"></div>
+                </div>
+                <div class="container-2 center">
+                    <img class="sabaq-frame" src="/client/Assets/Images/surah-name.png" alt="sabaq-frame">
+                    <div class="surat-name"></div>
+                    <div class="rukuh-number"></div>
+                </div>
+                <div class="container end">
+                    <img class="sabaq-ayah-frame" src="/client/Assets/Images/sabaq-ayah-frame.png"
+                        alt="sabaq-ayah-frame">
+                    <div class="ayat-number"></div>
+                </div>
+            </div>
+            <div class="ayah">
+                <span id="slide-one-ayat-text" class="ayats"></span>
+                <div class="content-div"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
