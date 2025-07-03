@@ -13,6 +13,13 @@ app.use(express.json());
 connectDB();
 dotenv.config();
 
+// --- In-memory caching of Excel data ---
+let cachedWorkbook = readFile("all-Distribuation.xlsx");
+let cachedDatabaseSheet = cachedWorkbook.Sheets["Database"];
+let cachedRukuSheet = cachedWorkbook.Sheets["Ruku"];
+let cachedRubaSheet = cachedWorkbook.Sheets["Ruba"];
+let cachedNisafSheet = cachedWorkbook.Sheets["nisaf"];
+
 let rukuhs = [];
 
 app.get("/", (req, res) => {
@@ -22,11 +29,8 @@ app.get("/", (req, res) => {
 app.get("/data", (req, res) => {
   const input = req.query.input; // Assuming the input is passed as a query parameter
 
-  // Load the Excel file
-  const workbook = readFile("all-Distribuation.xlsx");
-
-  // Get the "Database" sheet
-  const databaseSheet = workbook.Sheets["Database"];
+  // Use cachedDatabaseSheet instead of reading file
+  const databaseSheet = cachedDatabaseSheet;
 
   // Extract the surah number and ayah range from the input
   const regex = /\((\d+):(\d+)\)\((\d+):(\d+)\)/;
@@ -136,10 +140,7 @@ app.get("/data", (req, res) => {
 
 app.get("/juz", (req, res) => {
   const juzValue = req.query.juz;
-
-  const workbook = readFile("all-Distribuation.xlsx");
-
-  const databaseSheet = workbook.Sheets["Database"];
+  const databaseSheet = cachedDatabaseSheet;
 
   const filteredData = [];
   const range = databaseSheet["!ref"].split(":");
@@ -164,10 +165,10 @@ app.get("/juz", (req, res) => {
 function getValueFromSheet(req, res, sheetName, sheetNo) {
   const parahNo = req.query.parahNo;
   const valueNo = req.query[sheetNo];
-
-  const workbook = readFile("all-Distribuation.xlsx");
-
-  const sheet = workbook.Sheets[sheetName];
+  let sheet;
+  if (sheetName === "Ruba") sheet = cachedRubaSheet;
+  else if (sheetName === "nisaf") sheet = cachedNisafSheet;
+  else sheet = cachedRukuSheet;
 
   const columnLetter = String.fromCharCode(65 + parseInt(valueNo));
   const cellAddress = `${columnLetter}${parseInt(parahNo) + 1}`;
@@ -191,10 +192,7 @@ app.get("/nisf", (req, res) => {
 app.get("/rukuh", (req, res) => {
   const surahNo = req.query.surahNo;
   const rukuhNo = req.query.rukuNo;
-
-  const workbook = readFile("all-Distribuation.xlsx");
-
-  const sheet = workbook.Sheets["Ruku"];
+  const sheet = cachedRukuSheet;
 
   const filteredData = [];
   const range = sheet["!ref"].split(":");
