@@ -320,3 +320,12 @@ body {
     font-size: 3rem;
   }
 }
+
+/* Break marker styling */
+.ayah-break {
+  width: 100%;
+  height: 10px;
+  margin: 0px 0;
+  /* Optional: Add a subtle visual indicator */
+  /* border-bottom: 1px solid rgba(244, 207, 110, 0.3); */
+}

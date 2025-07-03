@@ -198,11 +198,18 @@ submitBtn.addEventListener("click", (event) => {
               const ayahNo = item.ayahNo;
               const ayahText = item.ayahText;
               const rukuhNo = item.rukuhNo;
-              wordsArray = ayahText.split(/\s(?![ًٌٍَُِّْٰۖۗۘۙۚۛۜ۩])/);
-              ayahNumber.push(ayahNo);
-              surahNames.push(surahName);
-              rukuhNoArray.push(rukuhNo);
-              appendAyah(wordsArray, ayahNo, filteredDataDiv);
+              // Check if this is a break marker
+              if (ayahNo === -1 && ayahText === "BREAK_MARKER") {
+                // Add a visual break
+                addBreakBetweenAyat(filteredDataDiv);
+              } else {
+                // Process normal text
+                wordsArray = ayahText.split(/\s(?![ًٌٍَُِّْٰۖۗۘۙۚۛۜ۩])/);
+                ayahNumber.push(ayahNo);
+                surahNames.push(surahName);
+                rukuhNoArray.push(rukuhNo);
+                appendAyah(wordsArray, ayahNo, filteredDataDiv);
+              }
               closePopandOverlay();
             });
 
@@ -356,7 +363,24 @@ submitBtn.addEventListener("click", (event) => {
   });
 });
 
+// Add this function to handle visual breaks between ayahs
+function addBreakBetweenAyat(contentDiv) {
+  // Add a line break div with proper styling
+  const breakDiv = document.createElement("div");
+  breakDiv.style.width = "50%";
+  breakDiv.style.height = "10px"; // Adjust the height as needed
+  breakDiv.className = "ayah-break";
+  contentDiv.append(breakDiv);
+}
+
 function appendAyah(words, ayahNumber, contentDiv) {
+  // Special handling for empty lines
+  if (ayahNumber === -1 && words.length === 1 && words[0].trim() === "") {
+    const lineBreak = document.createElement("br");
+    contentDiv.append(lineBreak);
+    return;
+  }
+  
   words.forEach(function (word) {
     const newElem = document.createElement("span");
     newElem.innerText = word + " "; // Append each word with a space

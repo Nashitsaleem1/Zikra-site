@@ -99,6 +99,14 @@ body {
   content: "";
   margin-top: 0.5em; /* Adjust as needed for spacing between lines */
 }
+/* Break marker styling */
+.ayah-break {
+  width: 100%;
+  height: 5px;
+  margin: 0px 0;
+  /* Optional: Add a subtle visual indicator */
+  /* border-bottom: 1px solid rgba(244, 207, 110, 0.3); */
+}
 
 .ayahStop {
   display: none !important;
