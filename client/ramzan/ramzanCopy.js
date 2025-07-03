@@ -296,6 +296,8 @@ submitBtn.addEventListener("click", (event) => {
                 rukuhNoArray.push(rukuhNo);
                 appendAyah(wordsArray, ayahNo, filteredDataDiv);
               }
+              closePopandOverlay();
+
             });
 
             const ayahResult = getRanges(ayahNumber);
