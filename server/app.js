@@ -26,6 +26,10 @@ app.get("/", (req, res) => {
   res.send("Working");
 });
 
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+
 app.get("/data", (req, res) => {
   const input = req.query.input; // Assuming the input is passed as a query parameter
 
