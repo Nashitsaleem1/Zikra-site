@@ -8,7 +8,7 @@ let overlay = document.querySelector(".overlay");
 // let ayah = document.querySelector('.ayah');
 // let paraNumber = document.querySelector('#para-number');
 // let value = document.querySelector(`#value-1`);
-
+const BASE_URL = "https://zikra-app-huofm.ondigitalocean.app";
 
 function closePopandOverlay(params) {
   overlay.style.display = "none";
@@ -188,7 +188,7 @@ form.addEventListener("submit", (event) => {
   const juzNo = document.querySelector("#juz-no").value;
   sabaqNumber.textContent = `جزء : ${juzNo}`;
 
-  fetch(`http://localhost:3000/filter?juzNo=${juzNo}`)
+  fetch(`${BASE_URL}/filter?juzNo=${juzNo}`)
     .then((response) => response.json())
     .then((data) => {
       const filteredData = data.map((item) => {

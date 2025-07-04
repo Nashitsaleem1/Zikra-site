@@ -1,4 +1,5 @@
 // Stopwatch
+const BASE_URL = "https://zikra-app-huofm.ondigitalocean.app";
 
 let startBtn = document.getElementById("start");
 let stopBtn = document.getElementById("stop");
@@ -101,6 +102,7 @@ var nisfDropdown = document.getElementById("dynamic-dropdown-nisf");
 var rukuDropdown = document.getElementById("dynamic-dropdown-ruku");
 var sabaqRubaDropdown = document.querySelector("#sabaq-ruba");
 
+
 var requestUrl = "";
 let currentActive = 0;
 let input;
@@ -183,7 +185,7 @@ for (let i = 1; i <= 114; i++) {
 
 function getRukuLength(surahNo) {
   var length;
-  fetch(`http://localhost:3000/rukuh?surahNo=${surahNo}`)
+  fetch(`${BASE_URL}/rukuh?surahNo=${surahNo}`)
     .then((response) => response.json())
     .then((data) => {
       length = data.length;
@@ -202,7 +204,7 @@ function getRukuLength(surahNo) {
 surahSelectDropdown.addEventListener("change", () => {
   var length;
   const surahNo = document.querySelector("#surah-select").value;
-  fetch(`http://localhost:3000/rukuh?surahNo=${surahNo}`)
+  fetch(`${BASE_URL}/rukuh?surahNo=${surahNo}`)
     .then((response) => response.json())
     .then((data) => {
       length = data.length;
@@ -241,15 +243,15 @@ submitBtn.addEventListener("click", (event) => {
 
   if (sabaqRubaDropdown.value === "ruba") {
     divisionType = "ruba";
-    requestUrl = `http://localhost:3000/ruba?parahNo=${parahNo}&rubaNo=${rubaNo}`;
+    requestUrl = `${BASE_URL}/ruba?parahNo=${parahNo}&rubaNo=${rubaNo}`;
     lesson.textContent = `ربع  :  ${rubaNo} `;
   } else if (sabaqRubaDropdown.value === "nisf") {
     divisionType = "nisf";
-    requestUrl = `http://localhost:3000/nisf?parahNo=${parahNo}&nisfNo=${nisfNo}`;
+    requestUrl = `${BASE_URL}/nisf?parahNo=${parahNo}&nisfNo=${nisfNo}`;
     lesson.textContent = `نصف : ${nisfNo}`;
   } else if (sabaqRubaDropdown.value === "rukuh") {
     divisionType = "rukuh";
-    requestUrl = `http://localhost:3000/rukuh?surahNo=${surahNo}&rukuNo=${rukuhNo}`;
+    requestUrl = `${BASE_URL}/rukuh?surahNo=${surahNo}&rukuNo=${rukuhNo}`;
     lesson.textContent = `رکوع : ${rukuhNo}`;
     rukuLesson.style.display = "none";
     lessonDiv.style.left = "-20em";
@@ -276,7 +278,7 @@ submitBtn.addEventListener("click", (event) => {
         }
 
         // Extract the input value from the response data
-        fetch(`http://localhost:3000/data?input=${input}`)
+        fetch(`${BASE_URL}/data?input=${input}`)
           .then((response) => response.json())
           .then((data) => {
             data.map((item) => {
@@ -351,7 +353,7 @@ submitBtn.addEventListener("click", (event) => {
           rubaNo = 1;
         }
         lesson.textContent = `ربع : ${rubaNo}`;
-        requestUrl = `http://localhost:3000/ruba?parahNo=${parahNo}&rubaNo=${rubaNo}`;
+        requestUrl = `${BASE_URL}/ruba?parahNo=${parahNo}&rubaNo=${rubaNo}`;
         console.log(requestUrl);
       } else if (divisionType == "nisf" && nisfNo <= 2) {
         if (nisfNo < 2) {
@@ -361,7 +363,7 @@ submitBtn.addEventListener("click", (event) => {
           nisfNo = 1;
         }
         lesson.textContent = `نصف : ${nisfNo}`;
-        requestUrl = `http://localhost:3000/nisf?parahNo=${parahNo}&nisfNo=${nisfNo}`;
+        requestUrl = `${BASE_URL}/nisf?parahNo=${parahNo}&nisfNo=${nisfNo}`;
         console.log(requestUrl);
       } else if (divisionType == "rukuh") {
         const length = document.querySelector("#dynamic-dropdown-ruku").length;
@@ -374,7 +376,7 @@ submitBtn.addEventListener("click", (event) => {
           rukuhNo = 1;
         }
         lesson.textContent = `رکوع : ${rukuhNo}`;
-        requestUrl = `http://localhost:3000/rukuh?surahNo=${surahNo}&rukuNo=${rukuhNo}`;
+        requestUrl = `${BASE_URL}/rukuh?surahNo=${surahNo}&rukuNo=${rukuhNo}`;
         console.log(requestUrl);
       }
 
@@ -400,7 +402,7 @@ submitBtn.addEventListener("click", (event) => {
           rubaNo = 4;
         }
         lesson.textContent = `ربع : ${rubaNo}`;
-        requestUrl = `http://localhost:3000/ruba?parahNo=${parahNo}&rubaNo=${rubaNo}`;
+        requestUrl = `${BASE_URL}/ruba?parahNo=${parahNo}&rubaNo=${rubaNo}`;
         console.log(requestUrl);
       } else if (divisionType == "nisf") {
         if (nisfNo > 1) {
@@ -410,7 +412,7 @@ submitBtn.addEventListener("click", (event) => {
           nisfNo = 2;
         }
         lesson.textContent = `نصف : ${nisfNo}`;
-        requestUrl = `http://localhost:3000/nisf?parahNo=${parahNo}&nisfNo=${nisfNo}`;
+        requestUrl = `${BASE_URL}/nisf?parahNo=${parahNo}&nisfNo=${nisfNo}`;
         console.log(requestUrl);
       } else if (divisionType == "rukuh") {
         if (rukuhNo > 1) {
@@ -427,7 +429,7 @@ submitBtn.addEventListener("click", (event) => {
           }, 2000);
         }
         lesson.textContent = `رکوع : ${rukuhNo}`;
-        requestUrl = `http://localhost:3000/rukuh?surahNo=${surahNo}&rukuNo=${rukuhNo}`;
+        requestUrl = `${BASE_URL}/rukuh?surahNo=${surahNo}&rukuNo=${rukuhNo}`;
         console.log(requestUrl);
       }
       makeRequest(requestUrl);

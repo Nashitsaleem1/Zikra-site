@@ -4,6 +4,7 @@ let sabaqNumber = document.querySelector(".sabaq-number");
 let crossBtn = document.querySelector(".cross-symbol");
 let popUp = document.querySelector(".popup");
 let overlay = document.querySelector(".overlay");
+const BASE_URL = "https://zikra-app-huofm.ondigitalocean.app";
 
 function closePopandOverlay(params) {
   overlay.style.display = "none";
@@ -99,7 +100,7 @@ let keydownHandler;
 let juzNoValue;
 
 function makeRequest(juzNo) {
-  fetch(`http://localhost:3000/juz?juz=${juzNo}`)
+  fetch(`${BASE_URL}/juz?juz=${juzNo}`)
     .then((response) => response.json())
     .then((data) => {
       const filteredData = data.map((item) => {
