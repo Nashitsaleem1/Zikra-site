@@ -5,8 +5,6 @@ import dotenv from "dotenv";
 import { connectDB } from "./data/database.js";
 const app = express();
 const { readFile } = pkg;
-import { fileURLToPath } from "url";
-import path from "path";
 
 app.use(cors({}));
 
@@ -15,20 +13,8 @@ app.use(express.json());
 connectDB();
 dotenv.config();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const excelFilePath = path.join(__dirname, "all-Distribuation.xlsx");
-
 // --- In-memory caching of Excel data ---
-let cachedWorkbook;
-
-try {
-  cachedWorkbook = readFile(excelFilePath);
-  console.log("Excel file loaded successfully.");
-} catch (err) {
-  console.error("Failed to load Excel file:", err.message);
-}
+let cachedWorkbook = readFile("All-Distribuation.xlsx");
 let cachedDatabaseSheet = cachedWorkbook.Sheets["Database"];
 let cachedRukuSheet = cachedWorkbook.Sheets["Ruku"];
 let cachedRubaSheet = cachedWorkbook.Sheets["Ruba"];
