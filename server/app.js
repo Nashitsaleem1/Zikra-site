@@ -6,6 +6,7 @@ import { connectDB } from "./data/database.js";
 const app = express();
 const { readFile } = pkg;
 import { fileURLToPath } from "url";
+import path from "path";
 
 app.use(cors({}));
 
