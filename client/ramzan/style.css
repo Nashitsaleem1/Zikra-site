@@ -63,7 +63,7 @@ body {
   margin: 0 auto;
   height: 86vh;
   overflow-y: scroll;
-  background-image: url(/client/Assets/Images/para-frame.jpg);
+  background-image: url(/Assets/Images/para-frame.jpg);
   background-repeat: no-repeat;
 }
 
