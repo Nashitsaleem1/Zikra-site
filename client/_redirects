@@ -1,2 +1,2 @@
-/other/*       /other/index.html        200
-/ramzan/*      /ramzan/ramzan.html       200
+/                   /client/other/index.html       200
+/client/ramzan/*    /client/ramzan/:splat          200
