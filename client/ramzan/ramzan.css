@@ -1,11 +1,11 @@
 @font-face {
   font-family: hafs;
-  src: url(/client/Assets/fonts/hafs.otf);
+  src: url(/Assets/fonts/hafs.otf);
 }
 
 @font-face {
   font-family: jamel;
-  src: url(/client/Assets/fonts/Jameel-Noori.ttf);
+  src: url(/Assets/fonts/Jameel-Noori.ttf);
 }
 
 html {
