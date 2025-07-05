@@ -1,0 +1,2 @@
+/other/*       /other/:splat        200
+/ramzan/*      /ramzan/:splat       200
