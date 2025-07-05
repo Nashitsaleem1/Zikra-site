@@ -1,11 +1,11 @@
 @font-face {
   font-family: hafs;
-  src: url(/Assets/fonts/hafs.otf);
+  src: url(/assets/fonts/hafs.otf);
 }
 
 @font-face {
   font-family: jamel;
-  src: url(/Assets/fonts/Jameel-Noori.ttf);
+  src: url(/assets/fonts/Jameel-Noori.ttf);
 }
 
 html {
@@ -70,7 +70,7 @@ body {
   background-color: #013938;
   height: 100vh;
   overflow-y: scroll;
-  background-image: url(/Assets/Images/boder.png);
+  background-image: url(/assets/Images/boder.png);
   background-repeat: no-repeat;
 }
 

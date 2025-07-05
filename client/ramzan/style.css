@@ -1,11 +1,11 @@
 @font-face {
   font-family: hafs;
-  src: url(/Assets/fonts/hafs.otf);
+  src: url(/assets/fonts/hafs.otf);
 }
 
 @font-face {
   font-family: jamel;
-  src: url(/Assets/fonts/Jameel-Noori.ttf);
+  src: url(/assets/fonts/Jameel-Noori.ttf);
 }
 
 html {
@@ -63,7 +63,7 @@ body {
   margin: 0 auto;
   height: 86vh;
   overflow-y: scroll;
-  background-image: url(/Assets/Images/para-frame.jpg);
+  background-image: url(/assets/Images/para-frame.jpg);
   background-repeat: no-repeat;
 }
 
