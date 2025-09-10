@@ -339,10 +339,10 @@ class QuranAudioPlayer {
   loadPara() {
     // Try different possible file naming patterns
     const possiblePaths = [
-      `../audios/full-quran/para-${this.currentPara}.mp3`,
-      `../audios/full-quran/Juz ${this.currentPara}.mp3`,
-      `../audios/full-quran/juz-${this.currentPara}.mp3`,
-      `../audios/full-quran/juz${this.currentPara}.mp3`,
+      `./audios/full-quran/para-${this.currentPara}.mp3`,
+      `./audios/full-quran/Juz ${this.currentPara}.mp3`,
+      `./audios/full-quran/juz-${this.currentPara}.mp3`,
+      `./audios/full-quran/juz${this.currentPara}.mp3`,
     ];
 
     // Use the first path by default
