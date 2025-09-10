@@ -29,7 +29,10 @@
     border-radius: var(--border-radius-large);
     margin-bottom: 3rem;
 }
-
+.logo {
+  display: flex;
+  align-items: center;
+}
 .page-title {
     font-size: clamp(2rem, 4vw, 3rem);
     font-family: var(--font-arabic);
@@ -178,6 +181,7 @@
 .progress-bar:hover .progress-handle {
     opacity: 1;
 }
+
 
 .additional-controls {
     display: flex;
@@ -434,7 +438,7 @@
     }
     
     .additional-controls {
-        flex-direction: column;
+        flex-direction: row;
         gap: 1rem;
         align-items: stretch;
     }
@@ -468,7 +472,13 @@
         margin: 1rem;
         border-radius: var(--border-radius);
     }
-    
+    .section-title {
+    font-size: 2rem;
+    font-family: var(--font-arabic);
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-align: center;
+}
     .current-player {
         margin: 0 1rem;
         padding: 1rem;
