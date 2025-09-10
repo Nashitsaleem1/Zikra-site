@@ -15,7 +15,7 @@ html {
 
 body {
   font-family: "hafs";
-  /* direction: rtl; */
+  direction: rtl;
   overflow-x: hidden;
   position: fixed;
   top: -8px;
