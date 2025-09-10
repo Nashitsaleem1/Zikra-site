@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zikra Dar Ul Nashr - Video Search</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./ramzan/ramzan.css">
+    <link rel="stylesheet" href="search.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Zikra Dar Ul Nashr</h1>
+            <p>Search Quranic Videos and Lectures</p>
+        </div>
+        
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search for Surah, Topic, or Keywords...">
+                <button id="search-button"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="search-options">
+                <label><input type="checkbox" id="option-title" checked> Search in Titles</label>
+                <label><input type="checkbox" id="option-description" checked> Search in Descriptions</label>
+                <label><input type="checkbox" id="option-tags" checked> Search in Tags</label>
+            </div>
+            <div id="search-suggestions" class="search-suggestions"></div>
+        </div>
+        
+        <div class="results-container">
+            <div id="search-stats" class="search-stats"></div>
+            <div id="search-results" class="search-results"></div>
+            <div id="pagination" class="pagination"></div>
+        </div>
+        
+        <div id="loading-spinner" class="loading-spinner">
+            <div class="spinner"></div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 Zikra Dar Ul Nashr. All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <!-- Script Imports -->
+    <script src="./Assets/js/config.js"></script>
+    <script src="./search-compatibility.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize the search engine
+            const searchEngine = new ZikraSearchEngine();
+            
+            // Elements
+            const searchInput = document.getElementById('search-input');
+            const searchButton = document.getElementById('search-button');
+            const searchResults = document.getElementById('search-results');
+            const searchStats = document.getElementById('search-stats');
+            const searchSuggestions = document.getElementById('search-suggestions');
+            const loadingSpinner = document.getElementById('loading-spinner');
+            const pagination = document.getElementById('pagination');
+            
+            // Options
+            const optionTitle = document.getElementById('option-title');
+            const optionDescription = document.getElementById('option-description');
+            const optionTags = document.getElementById('option-tags');
+            
+            // Current page and results
+            let currentPage = 1;
+            let currentResults = [];
+            
+            // Fetch video data when page loads
+            loadingSpinner.style.display = 'flex';
+            searchEngine.loadVideoData()
+                .then(() => {
+                    loadingSpinner.style.display = 'none';
+                    console.log('Video data loaded successfully');
+                })
+                .catch(error => {
+                    loadingSpinner.style.display = 'none';
+                    console.error('Error loading video data:', error);
+                    searchStats.innerHTML = '<p class="error">Error loading video data. Please try again later.</p>';
+                });
+                
+            // Search function
+            function performSearch() {
+                const query = searchInput.value.trim();
+                if (query.length < CONFIG.MIN_SEARCH_LENGTH) {
+                    searchSuggestions.innerHTML = '';
+                    searchSuggestions.style.display = 'none';
+                    return;
+                }
+                
+                const searchOptions = {
+                    searchInTitle: optionTitle.checked,
+                    searchInDescription: optionDescription.checked,
+                    searchInTags: optionTags.checked
+                };
+                
+                loadingSpinner.style.display = 'flex';
+                searchEngine.search(query, searchOptions)
+                    .then(results => {
+                        currentResults = results;
+                        currentPage = 1;
+                        displayResults(currentPage);
+                        loadingSpinner.style.display = 'none';
+                    })
+                    .catch(error => {
+                        console.error('Search error:', error);
+                        searchStats.innerHTML = '<p class="error">An error occurred while searching. Please try again.</p>';
+                        loadingSpinner.style.display = 'none';
+                    });
+            }
+            
+            // Display results function
+            function displayResults(page) {
+                searchResults.innerHTML = '';
+                searchSuggestions.innerHTML = '';
+                searchSuggestions.style.display = 'none';
+                
+                if (currentResults.length === 0) {
+                    searchStats.innerHTML = '<p>No results found. Try different keywords or check your spelling.</p>';
+                    pagination.innerHTML = '';
+                    return;
+                }
+                
+                const startIndex = (page - 1) * CONFIG.RESULTS_PER_PAGE;
+                const endIndex = Math.min(startIndex + CONFIG.RESULTS_PER_PAGE, currentResults.length);
+                const resultsToShow = currentResults.slice(startIndex, endIndex);
+                
+                searchStats.innerHTML = `<p>Found ${currentResults.length} result${currentResults.length !== 1 ? 's' : ''}. Showing ${startIndex + 1}-${endIndex}.</p>`;
+                
+                resultsToShow.forEach(result => {
+                    const resultElement = document.createElement('div');
+                    resultElement.className = 'result-item';
+                    
+                    // Format the description
+                    let description = result.description || 'No description available';
+                    if (description.length > CONFIG.DESCRIPTION_SNIPPET_LENGTH) {
+                        description = description.substring(0, CONFIG.DESCRIPTION_SNIPPET_LENGTH) + '...';
+                    }
+                    
+                    resultElement.innerHTML = `
+                        <div class="result-thumbnail">
+                            <a href="https://www.youtube.com/watch?v=${result.videoId}" target="_blank">
+                                <img src="${result.thumbnail}" alt="${result.title}">
+                            </a>
+                        </div>
+                        <div class="result-content">
+                            <h3><a href="https://www.youtube.com/watch?v=${result.videoId}" target="_blank">${result.title}</a></h3>
+                            <p class="result-description">${description}</p>
+                            <div class="result-meta">
+                                <span class="result-date">Published: ${new Date(result.publishedAt).toLocaleDateString()}</span>
+                                ${result.tags ? `<span class="result-tags">Tags: ${result.tags.join(', ')}</span>` : ''}
+                            </div>
+                        </div>
+                    `;
+                    
+                    searchResults.appendChild(resultElement);
+                });
+                
+                // Create pagination
+                createPagination();
+            }
+            
+            // Create pagination function
+            function createPagination() {
+                pagination.innerHTML = '';
+                
+                if (currentResults.length <= CONFIG.RESULTS_PER_PAGE) {
+                    return;
+                }
+                
+                const totalPages = Math.ceil(currentResults.length / CONFIG.RESULTS_PER_PAGE);
+                
+                // Previous button
+                if (currentPage > 1) {
+                    const prevButton = document.createElement('button');
+                    prevButton.innerHTML = '&laquo; Previous';
+                    prevButton.addEventListener('click', () => {
+                        currentPage--;
+                        displayResults(currentPage);
+                        window.scrollTo(0, 0);
+                    });
+                    pagination.appendChild(prevButton);
+                }
+                
+                // Page numbers
+                const startPage = Math.max(1, currentPage - 2);
+                const endPage = Math.min(totalPages, currentPage + 2);
+                
+                for (let i = startPage; i <= endPage; i++) {
+                    const pageButton = document.createElement('button');
+                    pageButton.textContent = i;
+                    if (i === currentPage) {
+                        pageButton.className = 'active';
+                    }
+                    pageButton.addEventListener('click', () => {
+                        currentPage = i;
+                        displayResults(currentPage);
+                        window.scrollTo(0, 0);
+                    });
+                    pagination.appendChild(pageButton);
+                }
+                
+                // Next button
+                if (currentPage < totalPages) {
+                    const nextButton = document.createElement('button');
+                    nextButton.innerHTML = 'Next &raquo;';
+                    nextButton.addEventListener('click', () => {
+                        currentPage++;
+                        displayResults(currentPage);
+                        window.scrollTo(0, 0);
+                    });
+                    pagination.appendChild(nextButton);
+                }
+            }
+            
+            // Add event listeners
+            searchInput.addEventListener('input', searchEngine.debounce(() => {
+                const query = searchInput.value.trim();
+                if (query.length >= CONFIG.MIN_SEARCH_LENGTH) {
+                    const suggestions = searchEngine.getSuggestions(query);
+                    if (suggestions.length > 0) {
+                        searchSuggestions.innerHTML = '';
+                        suggestions.forEach(suggestion => {
+                            const suggestionItem = document.createElement('div');
+                            suggestionItem.className = 'suggestion-item';
+                            suggestionItem.textContent = suggestion;
+                            suggestionItem.addEventListener('click', () => {
+                                searchInput.value = suggestion;
+                                searchSuggestions.innerHTML = '';
+                                searchSuggestions.style.display = 'none';
+                                performSearch();
+                            });
+                            searchSuggestions.appendChild(suggestionItem);
+                        });
+                        searchSuggestions.style.display = 'block';
+                    } else {
+                        searchSuggestions.innerHTML = '';
+                        searchSuggestions.style.display = 'none';
+                    }
+                } else {
+                    searchSuggestions.innerHTML = '';
+                    searchSuggestions.style.display = 'none';
+                }
+            }, 300));
+            
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            searchButton.addEventListener('click', performSearch);
+            
+            // Close suggestions when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!searchSuggestions.contains(e.target) && e.target !== searchInput) {
+                    searchSuggestions.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Translations - Zikra</title>
+    <link rel="stylesheet" href="search-tarjama-style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Add PapaParse in your HTML -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+    <!-- string-similarity script -->
+    <script src="//unpkg.com/string-similarity/umd/string-similarity.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="preload"
+      href="./ramzan/Assets/fonts/hafs.otf"
+      as="font"
+      type="font/otf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="./ramzan/Assets/fonts/Jameel-Noori.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img
+              src="Assets/Images/Zikra Dar Runasher.jpg"
+              alt="Zikra Logo"
+              class="logo-img"
+            />
+            <h1 class="logo-text">
+              <span class="english">Zikra</span>
+            </h1>
+          </a>
+        </div>
+        <nav class="nav">
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="quran-audio.html" class="nav-link">Quran Audio</a></li>
+            <li>
+              <a href="search-tarjama.html" class="nav-link active"
+                >Search Translations</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+          <h1 class="page-title">Search Translations</h1>
+          <p class="page-subtitle">
+            Search our comprehensive video library of translations and
+            explanations
+          </p>
+        </div>
+
+        <!-- Search Section -->
+        <div class="search-section">
+          <div class="search-container">
+            <div class="search-input-wrapper">
+              <i class="fas fa-search search-icon"></i>
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Search for Surah, Juz, Ayah, or any topic..."
+                autocomplete="off"
+              />
+              <button class="clear-search" title="Clear Search">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <button class="search-btn">
+              <i class="fas fa-search"></i>
+              Search
+            </button>
+          </div>
+
+          <!-- Search Suggestions -->
+          <div class="search-suggestions">
+            <h3>Search Suggestions:</h3>
+            <div class="suggestions-list">
+              <button class="suggestion-tag">Surah Al-Kahf</button>
+              <button class="suggestion-tag">Juz 1</button>
+              <button class="suggestion-tag">Surah Yasin</button>
+              <button class="suggestion-tag">Ayat Al-Kursi</button>
+              <button class="suggestion-tag">Surah Al-Fatiha</button>
+              <button class="suggestion-tag">Juz 30</button>
+              <button class="suggestion-tag">Surah Al-Baqarah</button>
+              <button class="suggestion-tag">Surah Al-Mulk</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filters Section -->
+        <div class="filters-section">
+          <div class="filters-header">
+            <h3>Filter Results</h3>
+            <button class="clear-filters">Clear Filters</button>
+          </div>
+          <div class="filters-grid">
+            <div class="filter-group">
+              <label for="surah-filter">Surah:</label>
+              <select id="surah-filter" class="filter-select">
+                <option value="">All Surahs</option>
+                <!-- Surah options will be populated by JavaScript -->
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="para-filter">Juz:</label>
+              <select id="para-filter" class="filter-select">
+                <option value="">All Juz</option>
+                <!-- Para options will be populated by JavaScript -->
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="duration-filter">Duration:</label>
+              <select id="duration-filter" class="filter-select">
+                <option value="">Any Duration</option>
+                <option value="short">Short (Less than 10 min)</option>
+                <option value="medium">Medium (10-30 min)</option>
+                <option value="long">Long (More than 30 min)</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="sort-filter">Sort by:</label>
+              <select id="sort-filter" class="filter-select">
+                <option value="relevance">Most Relevant</option>
+                <option value="date">Newest</option>
+                <option value="views">Most Viewed</option>
+                <option value="duration">Duration</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search Results -->
+        <div class="results-section">
+          <div class="results-header">
+            <h3 class="results-count">Searching...</h3>
+            <div class="view-toggle">
+              <button class="view-btn grid-view active" title="Grid view">
+                <i class="fas fa-th"></i>
+              </button>
+              <button class="view-btn list-view" title="List view">
+                <i class="fas fa-list"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="results-grid">
+            <!-- Results will be populated by JavaScript -->
+          </div>
+
+          <!-- Load More Button -->
+          <div class="load-more-section">
+            <button class="load-more-btn">
+              <i class="fas fa-plus"></i>
+              Load More
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Video Modal -->
+    <div class="video-modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Video Title</h3>
+          <button class="modal-close">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="video-container">
+            <iframe
+              class="video-iframe"
+              src=""
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="video-info">
+            <p class="video-description">Video description will appear here</p>
+            <div class="video-meta">
+              <span class="video-duration">Duration: 00:00</span>
+              <span class="video-views">Views: 0</span>
+              <span class="video-date">Published: --</span>
+            </div>
+            <div class="video-actions">
+              <a href="#" class="watch-on-youtube" target="_blank">
+                <i class="fab fa-youtube"></i>
+                Watch on YouTube
+              </a>
+              <button class="share-video">
+                <i class="fas fa-share"></i>
+                Share
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div class="loading-indicator">
+      <div class="spinner"></div>
+      <p>Searching...</p>
+    </div>
+
+    <!-- Error Message -->
+    <div class="error-message">
+      <div class="error-content">
+        <i class="fas fa-exclamation-triangle"></i>
+        <h3>Error Occurred</h3>
+        <p class="error-text">
+          An error occurred during search. Please try again.
+        </p>
+        <button class="retry-btn">Retry</button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <img
+              src="Assets/Images/Zikra Dar Runasher.jpg"
+              alt="Zikra Logo"
+              class="footer-logo-img"
+              width="100"
+            />
+            <p>Quran Learning Platform</p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="ramzan/ramzan.html">Ramzan Page</a></li>
+              <li><a href="ramzan/index.html">Friday Class</a></li>
+              <li><a href="quran-audio.html">Quran Audio</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <div class="contact-info">
+              <a href="#" class="contact-link">
+                <i class="fab fa-youtube"></i>
+                Our YouTube Channel
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Zikra. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="search-tarjama-script.js" defer></script>
+  </body>
+</html>

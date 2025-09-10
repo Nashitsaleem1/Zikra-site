@@ -1,0 +1,102 @@
+/* Mobile Warning Popup Styles */
+.mobile-warning-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.mobile-warning-content {
+    background-color: white;
+    border-radius: var(--border-radius-large, 20px);
+    padding: 30px;
+    max-width: 90%;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.warning-icon {
+    background-color: var(--primary-light, #10a463);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.warning-icon i {
+    font-size: 32px;
+    color: white;
+}
+
+.mobile-warning-content h3 {
+    color: var(--primary-color, #0c7b4b);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.mobile-warning-content p {
+    color: var(--dark-gray, #495057);
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.warning-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.warning-buttons button {
+    padding: 12px 20px;
+    border-radius: var(--border-radius, 12px);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-body, 'Cairo', sans-serif);
+    border: none;
+}
+
+.home-btn {
+    background-color: var(--primary-color, #0c7b4b);
+    color: white;
+}
+
+.home-btn:hover {
+    background-color: var(--primary-dark, #064d2e);
+    transform: translateY(-2px);
+}
+
+.continue-btn {
+    background-color: var(--light-gray, #f8f9fa);
+    color: var(--dark-gray, #495057);
+    border: 1px solid #e0e0e0 !important;
+}
+
+.continue-btn:hover {
+    background-color: #e9ecef;
+    transform: translateY(-2px);
+}

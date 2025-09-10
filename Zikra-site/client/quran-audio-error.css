@@ -1,0 +1,30 @@
+.para-item.error {
+    border: 2px solid #dc3545;
+    background-color: #f8d7da;
+    position: relative;
+}
+
+.para-item.error::before {
+    content: "!";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #dc3545;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.error-notification {
+    transition: all 0.3s ease;
+}
+
+.error-notification:hover {
+    transform: translateY(-5px);
+}

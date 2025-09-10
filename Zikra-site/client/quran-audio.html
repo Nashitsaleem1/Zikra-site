@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Quran Audio - Zikra</title>
+    <link rel="stylesheet" href="quran-audio-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" href="./ramzan/Assets/fonts/hafs.otf" as="font" type="font/otf" crossorigin="anonymous">
+    <link rel="preload" href="./ramzan/Assets/fonts/Jameel-Noori.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+    <link rel="stylesheet" href="quran-audio-error.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./Assets/Images/Zikra Dar Runasher.jpg" alt="Zikra Logo" class="logo-img">
+                    <h1 class="logo-text">
+                        <span class="english">Zikra</span>
+                    </h1>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="quran-audio.html" class="nav-link active">Quran Audio</a></li>
+                    <li><a href="search-tarjama.html" class="nav-link">Search Translations</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">Holy Quran Recitations</h1>
+                <p class="page-subtitle">Listen to the complete Quran recitation divided into 30 Juz</p>
+            </div>
+
+            <!-- Audio Player Section -->
+            <div class="audio-player-section">
+                <div class="current-player">
+                    <div class="player-info">
+                        <div class="para-info">
+                            <h2 class="current-para-title">Juz 1</h2>
+                            <p class="current-para-subtitle">From Surah Al-Fatiha to Surah Al-Baqarah</p>
+                        </div>
+                        <div class="player-controls">
+                            <button class="control-btn prev-btn" title="Previous Juz">
+                                <i class="fas fa-step-backward"></i>
+                            </button>
+                            <button class="control-btn play-pause-btn" title="Play/Pause">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button class="control-btn next-btn" title="Next Juz">
+                                <i class="fas fa-step-forward"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-section">
+                        <div class="time-display">
+                            <span class="current-time">00:00</span>
+                            <span class="duration">00:00</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                            <div class="progress-handle"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="additional-controls">
+                        <div class="volume-control">
+                            <i class="fas fa-volume-up"></i>
+                            <input type="range" class="volume-slider" min="0" max="100" value="80">
+                        </div>
+                        <div class="speed-control">
+                            <select class="speed-select">
+                                <option value="0.5">0.5x</option>
+                                <option value="0.75">0.75x</option>
+                                <option value="1" selected>1x</option>
+                                <option value="1.25">1.25x</option>
+                                <option value="1.5">1.5x</option>
+                            </select>
+                        </div>
+                        <button class="control-btn download-btn" title="Download">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <button class="control-btn loop-btn" title="Repeat">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                    </div>
+                    
+                    <audio class="audio-element" preload="metadata">
+                        <source src="../audios/full-quran/para-1.mp3" type="audio/mpeg">
+                        Your browser does not support audio playback
+                    </audio>
+                </div>
+            </div>
+
+            <!-- Para List -->
+            <div class="para-list-section">
+                <h2 class="section-title">Select Juz</h2>
+                <div class="para-grid">
+                    <!-- Para items will be generated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Recently Played -->
+            <div class="recent-section">
+                <h2 class="section-title">Recently Played</h2>
+                <div class="recent-list">
+                    <!-- Recent items will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Indicator -->
+    <div class="loading-indicator">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Zikra</h3>
+                    <p>Quran Learning Platform</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="ramzan/ramzan.html">Ramzan Page</a></li>
+                        <li><a href="ramzan/index.html">Friday Class</a></li>
+                        <li><a href="search-tarjama.html">Search Translations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <div class="contact-info">
+                        <a href="#" class="contact-link">
+                            <i class="fab fa-youtube"></i>
+                            Our YouTube Channel
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Zikra. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="quran-audio-script.js"></script>
+</body>
+
+</html>

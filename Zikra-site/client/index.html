@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zikra - Quran Learning Platform</title>
+    <link rel="stylesheet" href="home-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" href="./ramzan/Assets/fonts/hafs.otf" as="font" type="font/otf" crossorigin="anonymous">
+    <link rel="preload" href="./ramzan/Assets/fonts/Jameel-Noori.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="Assets/Images/Zikra Dar Runasher.jpg" alt="Zikra Logo" class="logo-img">
+                <h1 class="logo-text">
+                    <span class="english">Zikra</span>
+                </h1>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="main-title">Welcome to Zikra</span>
+                    <span class="sub-title">Quran Learning Platform</span>
+                </h1>
+                <p class="hero-description">
+                    A comprehensive platform for learning and reciting the Holy Quran with advanced tools for progress tracking and audio listening
+                </p>
+                <div class="hero-buttons">
+                    <a href="#features" class="btn btn-primary">
+                        <i class="fas fa-play"></i>
+                        Start Learning
+                    </a>
+                    <a href="#about" class="btn btn-secondary">
+                        <i class="fas fa-info-circle"></i>
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-decoration">
+            <div class="islamic-pattern"></div>
+        </div>
+    </section>
+
+    <!-- Main Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Choose the service that suits your needs for learning the Holy Quran</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Ramzan Page -->
+                <div class="feature-card" data-aos="fade-up" data-delay="100">
+                    <div class="card-icon ramzan-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Ramzan Page</h3>
+                        <p class="card-description">
+                            Special interface for the blessed month of Ramadan with advanced tools for study and recitation
+                        </p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Timing and monitoring tools</li>
+                            <li><i class="fas fa-check"></i> Special Ramadan interface</li>
+                            <li><i class="fas fa-check"></i> Daily progress tracking</li>
+                        </ul>
+                        <a href="ramzan/ramzan.html" class="card-btn">
+                            <span>Enter Now</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Friday Class -->
+                <div class="feature-card" data-aos="fade-up" data-delay="200">
+                    <div class="card-icon friday-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Friday Class</h3>
+                        <p class="card-description">
+                            Main page for lessons and educational sessions with advanced browsing capabilities
+                        </p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Browse by Surah and Ayah</li>
+                            <li><i class="fas fa-check"></i> Division by Juz and quarters</li>
+                            <li><i class="fas fa-check"></i> Beautiful text display</li>
+                        </ul>
+                        <a href="ramzan/index.html" class="card-btn">
+                            <span>Enter Now</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Full Quran Audio -->
+                <div class="feature-card" data-aos="fade-up" data-delay="300">
+                    <div class="card-icon audio-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Full Quran Audio</h3>
+                        <p class="card-description">
+                            Listen to the complete Quran recitation divided by Juz with an advanced audio player
+                        </p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> 30 complete Juz</li>
+                            <li><i class="fas fa-check"></i> High audio quality</li>
+                            <li><i class="fas fa-check"></i> Full playback control</li>
+                        </ul>
+                        <a href="quran-audio.html" class="card-btn">
+                            <span>Start Listening</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Search Tarjama -->
+                <div class="feature-card" data-aos="fade-up" data-delay="400">
+                    <div class="card-icon search-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Search Translations</h3>
+                        <p class="card-description">
+                            Search our comprehensive video library of translations and explanations from our YouTube channel
+                        </p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Advanced smart search</li>
+                            <li><i class="fas fa-check"></i> Filter by Surah</li>
+                            <li><i class="fas fa-check"></i> Direct playback</li>
+                        </ul>
+                        <a href="search-tarjama.html" class="card-btn">
+                            <span>Start Search</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">About Zikra Platform</h2>
+                    <p class="about-description">
+                        Zikra Platform is a comprehensive educational project aimed at facilitating Quran learning and memorization using the latest technologies. 
+                        We provide advanced tools to help students and teachers track progress and improve recitation.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-book-quran"></i>
+                            <h4>Comprehensive Education</h4>
+                            <p>Integrated curriculum for Quran learning</p>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-clock"></i>
+                            <h4>Progress Tracking</h4>
+                            <p>Advanced tools for monitoring performance and development</p>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h4>Available Everywhere</h4>
+                            <p>Responsive design that works on all devices</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-quran"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Zikra - ذکرا</h3>
+                    <p>Quran Learning Platform</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="ramzan/ramzan.html">Ramzan Page</a></li>
+                        <li><a href="ramzan/index.html">Friday Class</a></li>
+                        <li><a href="quran-audio.html">Quran Audio</a></li>
+                        <li><a href="search-tarjama.html">Search Translations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <div class="contact-info">
+                        <a href="#" class="contact-link">
+                            <i class="fab fa-youtube"></i>
+                            Our YouTube Channel
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Zikra. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="home-script.js"></script>
+</body>
+
+</html>

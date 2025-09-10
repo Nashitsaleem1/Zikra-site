@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- Book -->
+  <g>
+    <path fill="#87CEEB" d="M225,150 L350,125 L350,325 L225,350 Z" />
+    <path fill="#F5F5F5" d="M175,150 L300,125 L300,325 L175,350 Z" />
+    <path fill="#E0E0E0" d="M175,150 L300,125 L300,325 L175,350 L50,325 L50,125 Z" />
+    <!-- Book pages -->
+    <path fill="#CCCCCC" stroke="#999999" stroke-width="1" d="M175,175 L280,150 M175,200 L280,175 M175,225 L280,200 M175,250 L280,225 M175,275 L280,250 M175,300 L280,275" />
+  </g>
+  
+  <!-- Quill pen -->
+  <g>
+    <path fill="#333333" d="M325,75 C300,125 280,150 270,175 L290,160 C275,190 260,210 245,225 L260,215 C240,235 220,250 200,260 C210,245 225,225 250,190 C270,160 290,130 310,100 C318,85 322,75 325,75 Z" />
+  </g>
+  
+  <!-- Circular arrow -->
+  <path fill="none" stroke="#87CEEB" stroke-width="12" d="M170,260 C200,220 250,220 280,260" />
+  
+  <!-- Arabic text "ذکرا دار النشر" -->
+  <text x="200" y="380" font-family="Arial" font-size="36" text-anchor="middle" fill="#333333">Zikra</text>
+</svg>
