@@ -92,7 +92,7 @@ body {
 
 .brand-ur {
   font-family: "Noto Nastaliq Urdu", serif;
-  font-weight: 400; /* make Urdu look balanced */
+  font-weight: 600; /* make Urdu look balanced */
   direction: rtl;
 }
 
@@ -639,7 +639,9 @@ h1, h2, h3, h4, h5, h6 {
   .features-grid {
     grid-template-columns: 1fr;
   }
-
+.brand-ur {
+  margin-bottom: 0.5rem;
+}
   .about-content {
     grid-template-columns: 1fr;
     text-align: center;
