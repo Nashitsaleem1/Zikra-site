@@ -641,6 +641,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 .brand-ur {
   margin-bottom: 1rem;
+  font-weight: 400;
 }
   .about-content {
     grid-template-columns: 1fr;
