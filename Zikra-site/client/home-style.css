@@ -92,7 +92,7 @@ body {
 
 .brand-ur {
   font-family: "Noto Nastaliq Urdu", serif;
-  font-weight: 600; /* make Urdu look balanced */
+  font-weight: 400; /* make Urdu look balanced */
   direction: rtl;
 }
 
