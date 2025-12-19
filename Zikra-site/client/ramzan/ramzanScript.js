@@ -4,7 +4,8 @@ let sabaqNumber = document.querySelector(".sabaq-number");
 let crossBtn = document.querySelector(".cross-symbol");
 let popUp = document.querySelector(".popup");
 let overlay = document.querySelector(".overlay");
-const BASE_URL = "https://zikra-app-huofm.ondigitalocean.app";
+// const BASE_URL = "https://zikra-app-huofm.ondigitalocean.app";
+const BASE_URL = "https://my-node-app.duckdns.org";
 
 function closePopandOverlay(params) {
   overlay.style.display = "none";

@@ -14,7 +14,8 @@ var rubaDropdown = document.getElementById("dynamic-dropdown-ruba");
 var nisfDropdown = document.getElementById("dynamic-dropdown-nisf");
 var rukuDropdown = document.getElementById("dynamic-dropdown-ruku");
 var sabaqRubaDropdown = document.querySelector("#sabaq-ruba");
-const BASE_URL = "https://zikra-app-huofm.ondigitalocean.app";
+// const BASE_URL = "https://zikra-app-huofm.ondigitalocean.app";
+const BASE_URL = "https://my-node-app.duckdns.org";
 
 var requestUrl = "";
 let currentActive = 1;
