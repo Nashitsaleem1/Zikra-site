@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // YouTube API Configuration
-const API_KEY = 'AIzaSyCz1L7-mDUokwxh82ThbrRY3mzkdY5qeE0';
+const apiKey = process.env.GOOGLE_API_KEY;
 const CHANNEL_ID = 'UCLYuowOAkMxiPFNWEDzqldQ';
 const API_BASE_URL = 'https://www.googleapis.com/youtube/v3';
 
