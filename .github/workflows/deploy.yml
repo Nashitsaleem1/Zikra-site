@@ -14,8 +14,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /var/www/node-app
-            git checkout zikra-new
-            git pull origin zikra-new
+            git fetch origin zikra-new
+            git reset --hard origin/zikra-new
             cd Zikra-site/server
             npm install --production
             pm2 restart node-app || pm2 start app.js --name "node-app"
