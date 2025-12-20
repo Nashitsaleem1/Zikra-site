@@ -1,5 +1,5 @@
 // Stopwatch
-// const BASE_URL = "https://zikra-app-huofm.ondigitalocean.app";
+// const BASE_URL = "https://zikra-app-6to3r.ondigitalocean.app/";
 
 const BASE_URL = "https://my-node-app.duckdns.org";
 

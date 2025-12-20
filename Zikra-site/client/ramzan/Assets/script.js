@@ -8,7 +8,7 @@ let overlay = document.querySelector(".overlay");
 // let ayah = document.querySelector('.ayah');
 // let paraNumber = document.querySelector('#para-number');
 // let value = document.querySelector(`#value-1`);
-// const BASE_URL = "https://zikra-app-huofm.ondigitalocean.app";
+// const BASE_URL = "https://zikra-app-6to3r.ondigitalocean.app";
 const BASE_URL = "https://my-node-app.duckdns.org";
 
 function closePopandOverlay(params) {
